@@ -19,6 +19,8 @@ public class Main {
 
         String[] names = context.getBeanDefinitionNames();
 
+        context.close();
+
 
     }
 }
