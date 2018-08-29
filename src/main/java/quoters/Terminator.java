@@ -10,7 +10,6 @@ import java.util.List;
  */
 @Benchmark
 @Transaction
-@DeprecatedClass(alternative = T1000.class)
 public class Terminator implements Quoter {
     @Setter
     private List<String> messages;

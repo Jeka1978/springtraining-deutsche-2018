@@ -6,17 +6,30 @@
 
 
 
+    <bean class="java.lang.Integer" factory-bean="integerFactory2" factory-method="getInt"/>
+
+    <bean id="integerFactory2" class="quoters.IntegerFactory2"/>
+
+    <!--<bean class="quoters.IntegerFactory" name="integerFactory">
+       <constructor-arg  value="100"/>
+   </bean>-->
+
+
    <context:component-scan base-package="quoters"/>
 
     <bean class="quoters.InjectRandomIntAnnotationBeanPostProcessor"/>
     <bean class="quoters.TransactionAnnotationBeanPostProcessor"/>
     <bean class="quoters.BenchmarkAnnotationBeanPostProcessor"/>
+    <bean class="quoters.DeprecatedBeansHandlerBeanFactoryPostProcessor"/>
 
-    <bean class="quoters.BeanDefinitionAnalyzerBeanFactoryPostProcessor"/>
+    <context:property-placeholder location="classpath:quotes.properties"/>
+
+    <!--<bean class="quoters.BeanDefinitionAnalyzerBeanFactoryPostProcessor"/>-->
 
     <bean id="quote" class="java.lang.String">
         <constructor-arg value="Trust me"/>
     </bean>
+
 
 
     <bean id="talkingRobot" class="quoters.TalkingRobotImpl">
@@ -29,7 +42,7 @@
     </bean>
 
     <bean id="shakespeare" class="quoters.Shakespeare">
-        <property name="message" value="2 B || ! 2 B"/>
+        <property name="message" value="${shake}"/>
     </bean>
 
     <bean id="terminator" class="quoters.Terminator" destroy-method="killAll">

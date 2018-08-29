@@ -19,6 +19,10 @@ public class Main {
 
         String[] names = context.getBeanDefinitionNames();
 
+        System.out.println(context.getBean(Integer.class));
+        System.out.println(context.getBean(Integer.class));
+        System.out.println(context.getBean(Integer.class));
+        System.out.println(context.getBean(Integer.class));
         context.close();
 
 
