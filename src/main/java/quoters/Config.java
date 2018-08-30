@@ -1,8 +1,6 @@
 package quoters;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 /**
@@ -10,6 +8,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
  */
 @PropertySource("classpath:quotes.properties")
 @Configuration
+@ComponentScan
+@EnableAspectJAutoProxy
 public class Config {
 
 }

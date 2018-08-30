@@ -16,38 +16,32 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 /**
  * @author Evgeny Borisov
  */
-@RequiredArgsConstructor
-@Component("lala")
-public abstract class ColorFrame extends JFrame {
-    private final String title;
-
-    @Autowired(required = false)
-    private Color color;
+@Component
+public class ColorFrame extends JFrame {
 
     @Autowired
-    ScreenSaverConfig config;
+    private Color color;
 
 
     private Random random = new Random();
 
     @PostConstruct
     public void init(){
-        setTitle(title);
+        System.out.println(color.getClass().getName());
+        System.out.println(color.getBlue());
+        System.out.println(color.getBlue());
+        System.out.println(color.getBlue());
+        System.out.println(color.getBlue());
         setSize(300,300);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public void moveToRandomLocation() {
-        color = config.color();
-        System.out.println(config.getClass().getName());
         setLocation(random.nextInt(1600),random.nextInt(900));
         getContentPane().setBackground(color);
         repaint();
     }
-
-    protected abstract Color getColorBean() ;
-
 
 }
 

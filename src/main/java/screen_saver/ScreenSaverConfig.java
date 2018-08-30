@@ -2,9 +2,11 @@ package screen_saver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
@@ -16,26 +18,17 @@ import java.util.Random;
 //@ImportResource("classpath:context.xml")
 public class ScreenSaverConfig {
 
-    @Autowired
-    private ApplicationContext context;
 
     private Random random = new Random();
-    @Value("${JAVA_HOME}")
-    private String javaHome;
 
-    @Bean
-    public ColorFrame frame(){
-        return new ColorFrame(javaHome) {
-            @Override
-            protected Color getColorBean() {
-                return color();
-            }
-        };
-    }
+    /*@Bean
+    public JPanel panel(ColorFrame colorFrame){
+        new JPanel().setBackground(colorFrame.getBackground());
+    }*/
 
 
-    @Bean
-    @Scope("prototype")
+    @Bean(initMethod = "getBlue", destroyMethod = "")
+    @Scope(value = BeanDefinition.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
     public Color color(){
         return new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
     }

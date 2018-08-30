@@ -1,5 +1,7 @@
 package quoters;
 
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -16,11 +18,11 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
-        String[] names = context.getBeanDefinitionNames();
-        context.getBean(TalkingRobot.class).talk();
 
+        System.out.println(context.getBean("shakespeare").getClass());
+        System.out.println(context.getBean(MainService.class).getClass());
         context.close();
 
 

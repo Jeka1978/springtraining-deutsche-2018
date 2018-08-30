@@ -18,7 +18,6 @@ import static quoters.GenreType.FILM;
 @Component
 public class TalkingRobotImpl implements TalkingRobot {
     @Autowired(required = false)
-    @Genre(FILM)
     private List<Quoter> quoters = Arrays.asList(() -> System.out.println("this is default quote"));
 
 

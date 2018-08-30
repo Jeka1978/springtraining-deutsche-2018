@@ -17,11 +17,6 @@ public class TransactionAnnotationBeanPostProcessor implements BeanPostProcessor
     private ConfigurableListableBeanFactory factory;
 
     @Override
-    public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
-        return null;
-    }
-
-    @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Class<?> beanClass = factory.getType(beanName);
         if (beanClass.isAnnotationPresent(Transaction.class)) {

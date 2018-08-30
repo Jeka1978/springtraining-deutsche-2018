@@ -36,8 +36,5 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
         return bean;
     }
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        return null;
-    }
+
 }
