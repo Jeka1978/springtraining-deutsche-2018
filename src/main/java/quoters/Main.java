@@ -1,6 +1,7 @@
 package quoters;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.InvocationHandler;
@@ -18,11 +19,8 @@ public class Main {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         String[] names = context.getBeanDefinitionNames();
+        context.getBean(TalkingRobot.class).talk();
 
-        System.out.println(context.getBean(Integer.class));
-        System.out.println(context.getBean(Integer.class));
-        System.out.println(context.getBean(Integer.class));
-        System.out.println(context.getBean(Integer.class));
         context.close();
 
 

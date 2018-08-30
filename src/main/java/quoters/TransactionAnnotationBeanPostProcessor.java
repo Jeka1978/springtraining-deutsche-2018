@@ -4,15 +4,22 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Proxy;
 
 /**
  * @author Evgeny Borisov
  */
+@Component
 public class TransactionAnnotationBeanPostProcessor implements BeanPostProcessor {
     @Autowired
     private ConfigurableListableBeanFactory factory;
+
+    @Override
+    public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
+        return null;
+    }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {

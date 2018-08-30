@@ -5,55 +5,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
-    <bean class="java.lang.Integer" factory-bean="integerFactory2" factory-method="getInt"/>
-
-    <bean id="integerFactory2" class="quoters.IntegerFactory2"/>
-
-    <!--<bean class="quoters.IntegerFactory" name="integerFactory">
-       <constructor-arg  value="100"/>
-   </bean>-->
+    <context:component-scan base-package="quoters"/>
 
 
-   <context:component-scan base-package="quoters"/>
-
-    <bean class="quoters.InjectRandomIntAnnotationBeanPostProcessor"/>
-    <bean class="quoters.TransactionAnnotationBeanPostProcessor"/>
-    <bean class="quoters.BenchmarkAnnotationBeanPostProcessor"/>
-    <bean class="quoters.DeprecatedBeansHandlerBeanFactoryPostProcessor"/>
-
-    <context:property-placeholder location="classpath:quotes.properties"/>
-
-    <!--<bean class="quoters.BeanDefinitionAnalyzerBeanFactoryPostProcessor"/>-->
-
-    <bean id="quote" class="java.lang.String">
-        <constructor-arg value="Trust me"/>
+    <bean class="quoters.Shakespeare">
     </bean>
 
-
-
-    <bean id="talkingRobot" class="quoters.TalkingRobotImpl">
-        <property name="quoters">
-            <list>
-                <ref bean="shakespeare"/>
-                <ref bean="terminator"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="shakespeare" class="quoters.Shakespeare">
-        <property name="message" value="${shake}"/>
-    </bean>
-
-    <bean id="terminator" class="quoters.Terminator" destroy-method="killAll">
-        <property name="messages">
-            <list>
-                <value>I'll be back</value>
-                <ref bean="quote"/>
-                <value>Astalavista baby</value>
-            </list>
-        </property>
-    </bean>
 </beans>
 
 

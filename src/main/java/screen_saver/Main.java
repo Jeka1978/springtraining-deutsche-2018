@@ -10,6 +10,7 @@ public class Main {
     @SneakyThrows
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ScreenSaverConfig.class);
+
         while (true) {
             context.getBean(ColorFrame.class).moveToRandomLocation();
             Thread.sleep(70);

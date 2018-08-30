@@ -2,6 +2,7 @@ package screen_saver;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +17,16 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author Evgeny Borisov
  */
 @RequiredArgsConstructor
-public class ColorFrame extends JFrame {
+@Component("lala")
+public abstract class ColorFrame extends JFrame {
     private final String title;
 
-    @Autowired
+    @Autowired(required = false)
     private Color color;
+
+    @Autowired
+    ScreenSaverConfig config;
+
 
     private Random random = new Random();
 
@@ -33,22 +39,14 @@ public class ColorFrame extends JFrame {
     }
 
     public void moveToRandomLocation() {
+        color = config.color();
+        System.out.println(config.getClass().getName());
         setLocation(random.nextInt(1600),random.nextInt(900));
         getContentPane().setBackground(color);
         repaint();
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    protected abstract Color getColorBean() ;
 
 
 }
