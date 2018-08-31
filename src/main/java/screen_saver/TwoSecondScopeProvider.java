@@ -18,7 +18,7 @@ public class TwoSecondScopeProvider implements Scope {
 
 
      private  Cache<String, Object> cache = CacheBuilder.newBuilder()
-             .expireAfterWrite(2, TimeUnit.SECONDS).weakKeys().concurrencyLevel(1).build();
+             .expireAfterWrite(2, TimeUnit.SECONDS).weakKeys().softValues().concurrencyLevel(1).build();
 
 
 
