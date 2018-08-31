@@ -21,14 +21,11 @@ public class ScreenSaverConfig {
 
     private Random random = new Random();
 
-    /*@Bean
-    public JPanel panel(ColorFrame colorFrame){
-        new JPanel().setBackground(colorFrame.getBackground());
-    }*/
 
 
-    @Bean(initMethod = "getBlue", destroyMethod = "")
-    @Scope(value = BeanDefinition.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
+
+    @Bean
+    @Scope(value = "twoSeconds", proxyMode = ScopedProxyMode.TARGET_CLASS)
     public Color color(){
         return new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
     }
